@@ -4,7 +4,8 @@ function randomValue (min, max){
     return Math.floor(Math.random() * (max - min +1) + min);
 }
 
-let parent = document.getElementById("container");
+let parent = document.getElementById('container');
+let table = document.getElementById('table');
 
 let newArr = [];
 
@@ -19,7 +20,7 @@ function City (loc, minC, maxC, avgPS){
     newArr.push(this);
 }
 
-seattle = new City ('Seattle', 23, 65, 6.3);
+let seattle = new City ('Seattle', 23, 65, 6.3);
 let tokoyo = new City ('Toyko', 3, 24, 1.2);
 let dubai = new City ('Dubai', 11, 38, 3.7);
 let paris = new City ('Paris', 20, 38, 2.3);
@@ -40,22 +41,24 @@ City.prototype.calcRandcookies = function(){
 }
 
 City.prototype.render = function(){
-    let h2El = document.createElement('h2');
-    parent.appendChild(h2El);
-    h2El.textContent = this.location;
 
-    let unorderedlistEl = document.createElement('ul');
-    parent.appendChild(unorderedlistEl);
+    let headerRow = document.createElement('tr');
+    table.appendChild(headerRow);
 
-    let liEl = 0;
+    let th = document.createElement('th');
+    headerRow.appendChild(th);
+    th.textContent = this.location;
+
+    let bodyRow = document.createElement('tr');
+    table.appendChild(bodyRow);
+
+    let Elr = 0;
     for(let i = 0 ; i < this.cookiesPerHour.length ; i++){
-        liEl = document.createElement('li');
-        unorderedlistEl.appendChild(liEl);
-        liEl.textContent = operationHours[i] + ': ' + this.cookiesPerHour[i] + 'Cookies';
+        Elr = document.createElement('th');
+        bodyRow.appendChild(Elr);
+        Elr.textContent = this.cookiesPerHour[i];
     }
-    let totalliItem = document.createElement('li');
-    unorderedlistEl.appendChild(totalliItem);
-    totalliItem.textContent = 'Total :' + this.total + 'Cookies';
+   
 }
 
 for(let i=0 ; i<newArr.length ; i++){
