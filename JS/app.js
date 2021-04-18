@@ -7,6 +7,8 @@ function randomValue (min, max){
 let parent = document.getElementById('container');
 let table = document.getElementById('table');
 
+let neuArr = [];
+
 let newArr = [];
 
 function City (loc, minC, maxC, avgPS){
@@ -38,6 +40,31 @@ City.prototype.calcRandcookies = function(){
         this.cookiesPerHour.push(Math.ceil(this.randomCust[i]*this.avgPerSale));
         this.total += this.cookiesPerHour[i];
     }console.log(this.total);
+    console.log(neuArr);
+}
+
+City.prototype.lastArray = function(){
+
+    for(let i=0 ; i<operationHours.length ; i++){
+        if(neuArr.length<this.cookiesPerHour.length){
+        neuArr.push(this.cookiesPerHour[i]);
+        }else{
+            neuArr[i] += this.cookiesPerHour[i];
+        }
+    }
+}
+
+let ExtRow = document.createElement('tr');
+table.appendChild(ExtRow);
+
+let EmptySp = document.createElement('th');
+ExtRow.appendChild(EmptySp);
+
+let Hl = 0;
+for(let i=0 ; i<operationHours.length ; i++){
+    let Hl = document.createElement('th');
+    ExtRow.appendChild(Hl);
+    Hl.textContent = operationHours[i];
 }
 
 City.prototype.render = function(){
@@ -49,20 +76,45 @@ City.prototype.render = function(){
     headerRow.appendChild(th);
     th.textContent = this.location;
 
-    let bodyRow = document.createElement('tr');
-    table.appendChild(bodyRow);
 
     let Elr = 0;
     for(let i = 0 ; i < this.cookiesPerHour.length ; i++){
-        Elr = document.createElement('th');
-        bodyRow.appendChild(Elr);
+        Elr = document.createElement('td');
+        headerRow.appendChild(Elr);
         Elr.textContent = this.cookiesPerHour[i];
-    }
-   
+    }   
+        Elr = document.createElement('td');
+        headerRow.appendChild(Elr);
+        Elr.textContent = this.total;
 }
+
+
+
 
 for(let i=0 ; i<newArr.length ; i++){
 newArr[i].calcRandCust();
 newArr[i].calcRandcookies();
 newArr[i].render();
+newArr[i].lastArray();
+}
+
+let x = 0
+for(let i=0 ; i<neuArr.length ; i++){
+    x += neuArr[i];
+}
+
+neuArr.push(x);
+
+let LastRow = document.createElement('tr');
+table.appendChild(LastRow);
+
+let EmptySpot = document.createElement('th');
+LastRow.appendChild(EmptySpot);
+EmptySpot.textContent = 'Total';
+
+let Ellr = 0;
+for(let i=0 ; i<neuArr.length ; i++){
+    Ellr = document.createElement('td');
+    LastRow.appendChild(Ellr);
+    Ellr.textContent = neuArr[i];
 }
