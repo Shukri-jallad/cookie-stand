@@ -88,22 +88,58 @@ City.prototype.render = function(){
         Elr.textContent = this.total;
 }
 
+function hotfix(){
+let x = 0
+for(let i=0 ; i<neuArr.length ; i++){
+x += neuArr[i];
+}
+if(neuArr.length < operationHours.length){
+neuArr.push(x);
+}else{
+    neuArr[14] = x;
+}
+}
 
+const form = document.getElementById('salesForm');
+
+form.addEventListener('submit', handleSubmitting);
+
+function handleSubmitting(event){
+    event.preventDefault();
+    console.log(event);
+
+    let newCityName =event.target.nameField.value;
+
+    let minCus = event.target.minC.value;
+    let maxCus = event.target.maxC.value;
+    
+    let avgPer = event.target.avgP.value;
+    
+
+    let newCity = new City(newCityName, minCus, maxCus, avgPer);
+
+    newCity.calcRandCust();
+    newCity.calcRandcookies();
+    hotfix();
+    newCity.render();
+    newCity.lastArray();
+
+    newArry();
+
+}
+    
 
 
 for(let i=0 ; i<newArr.length ; i++){
-newArr[i].calcRandCust();
-newArr[i].calcRandcookies();
-newArr[i].render();
-newArr[i].lastArray();
-}
+    newArr[i].calcRandCust();
+    newArr[i].calcRandcookies();
+    newArr[i].render();
+    newArr[i].lastArray();
+    }
 
-let x = 0
-for(let i=0 ; i<neuArr.length ; i++){
-    x += neuArr[i];
-}
 
-neuArr.push(x);
+function newArry(){
+
 
 let LastRow = document.createElement('tr');
 table.appendChild(LastRow);
@@ -117,4 +153,8 @@ for(let i=0 ; i<neuArr.length ; i++){
     Ellr = document.createElement('td');
     LastRow.appendChild(Ellr);
     Ellr.textContent = neuArr[i];
+
 }
+
+}
+

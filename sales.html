@@ -7,11 +7,35 @@
     <title>Document</title>
 </head>
 <body>
-    <div id="container"></div>
-    <div id="table"></div>
     
-    <script src="JS/app.js"></script>
+    <header>
+        <form id="salesForm">
+        <fieldset>
+          <legend>KittenForm</legend>
+            <label for="nameField">CityName:</label>
+            <input type="text" id="nameField">
+            <br>
+            <label for="minC">Min.Cust:</label>
+            <input type="text" id="minC">
+            <br>
+            <label for="maxC">Max.Cust:</label>
+            <input type="text" id="maxC">
+            <br>
+            <label for="avgP">AvgePer:</label>
+            <input type="text" id="avgP">
+            <br>
+            <input type="submit" value="Submit">
+        </fieldset>
+        </form>
+    </header>
+    
+    <main>
+        <div id="container"></div>
+        <div id="table"></div>
+    </main>
 
-    
 </body>
+<footer>
+    <script src="JS/app.js"></script>
+</footer>
 </html>
