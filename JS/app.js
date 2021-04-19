@@ -7,11 +7,23 @@ function randomValue (min, max){
 let parent = document.getElementById('container');
 let table = document.getElementById('table');
 
+let ExtRow = document.createElement('tr');
+table.appendChild(ExtRow);
+
+let EmptySp = document.createElement('th');
+ExtRow.appendChild(EmptySp);
+
+let Hl = 0;
+for(let i=0 ; i<operationHours.length ; i++){
+    let Hl = document.createElement('th');
+    ExtRow.appendChild(Hl);
+    Hl.textContent = operationHours[i];
+}
+
 let neuArr = [];
 
 let newArr = [];
 
-let dummyArr = [];
 
 function City (loc, minC, maxC, avgPS){
     this.location = loc;
@@ -69,19 +81,6 @@ City.prototype.lastArray = function(){
     }
 }
 
-let ExtRow = document.createElement('tr');
-table.appendChild(ExtRow);
-
-let EmptySp = document.createElement('th');
-ExtRow.appendChild(EmptySp);
-
-let Hl = 0;
-for(let i=0 ; i<operationHours.length ; i++){
-    let Hl = document.createElement('th');
-    ExtRow.appendChild(Hl);
-    Hl.textContent = operationHours[i];
-}
-
 City.prototype.render = function(){
 
     let headerRow = document.createElement('tr');
@@ -107,9 +106,12 @@ const form = document.getElementById('salesForm');
 
 form.addEventListener('submit', handleSubmitting);
 
+
 function handleSubmitting(event){
     event.preventDefault();
     console.log(event);
+
+    table.removeChild(table.lastElementChild);
 
     let newCityName = event.target.nameField.value;
     let minCus = event.target.minC.value;
@@ -134,7 +136,7 @@ for(let i=0 ; i<newArr.length ; i++){
     newArr[i].lastArray();
     }
 
-
+console.log(newArr);
 
 function newArry(){
 
@@ -150,8 +152,11 @@ for(let i=0 ; i<neuArr.length ; i++){
     Ellr = document.createElement('td');
     LastRow.appendChild(Ellr);
     Ellr.textContent = neuArr[i];
-
 }
 }
 
-console.log(neuArr);
+newArry();
+
+
+
+console.log(table.childElementCount);
