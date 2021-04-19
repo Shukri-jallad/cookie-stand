@@ -11,6 +11,8 @@ let neuArr = [];
 
 let newArr = [];
 
+let dummyArr = [];
+
 function City (loc, minC, maxC, avgPS){
     this.location = loc;
     this.minCust = minC;
@@ -36,12 +38,16 @@ City.prototype.calcRandCust = function(){
 }
 
 City.prototype.calcRandcookies = function(){
+   
     for(let i=0 ; i<operationHours.length ; i++){
         this.cookiesPerHour.push(Math.ceil(this.randomCust[i]*this.avgPerSale));
         this.total += this.cookiesPerHour[i];
-    }console.log(this.total);
+    }
+
+    console.log(this.total);
     console.log(neuArr);
 }
+
 
 City.prototype.lastArray = function(){
 
@@ -51,6 +57,15 @@ City.prototype.lastArray = function(){
         }else{
             neuArr[i] += this.cookiesPerHour[i];
         }
+    } let x = 0
+    if(neuArr.length = this.cookiesPerHour.length){
+        
+    for(let i=0 ; i<neuArr.length ; i++){
+    x += neuArr[i];
+    }
+    neuArr.push(x);
+    }else{
+        neuArr[14] += this.total;
     }
 }
 
@@ -88,18 +103,6 @@ City.prototype.render = function(){
         Elr.textContent = this.total;
 }
 
-function hotfix(){
-let x = 0
-for(let i=0 ; i<neuArr.length ; i++){
-x += neuArr[i];
-}
-if(neuArr.length < operationHours.length){
-neuArr.push(x);
-}else{
-    neuArr[14] = x;
-}
-}
-
 const form = document.getElementById('salesForm');
 
 form.addEventListener('submit', handleSubmitting);
@@ -108,11 +111,9 @@ function handleSubmitting(event){
     event.preventDefault();
     console.log(event);
 
-    let newCityName =event.target.nameField.value;
-
+    let newCityName = event.target.nameField.value;
     let minCus = event.target.minC.value;
     let maxCus = event.target.maxC.value;
-    
     let avgPer = event.target.avgP.value;
     
 
@@ -120,15 +121,11 @@ function handleSubmitting(event){
 
     newCity.calcRandCust();
     newCity.calcRandcookies();
-    hotfix();
     newCity.render();
     newCity.lastArray();
 
     newArry();
-
 }
-    
-
 
 for(let i=0 ; i<newArr.length ; i++){
     newArr[i].calcRandCust();
@@ -138,12 +135,12 @@ for(let i=0 ; i<newArr.length ; i++){
     }
 
 
-function newArry(){
 
+function newArry(){
 
 let LastRow = document.createElement('tr');
 table.appendChild(LastRow);
-
+    
 let EmptySpot = document.createElement('th');
 LastRow.appendChild(EmptySpot);
 EmptySpot.textContent = 'Total';
@@ -155,6 +152,6 @@ for(let i=0 ; i<neuArr.length ; i++){
     Ellr.textContent = neuArr[i];
 
 }
-
 }
 
+console.log(neuArr);
