@@ -1,0 +1,124 @@
+* {
+    box-sizing: border-box;
+}
+
+body{
+    background-color:whitesmoke;
+    font-family: Arial;
+    padding: 10px;
+}
+header{
+    text-align: right;
+    padding: 10px;
+    
+}
+
+header nav{
+    background-color: cadetblue;
+    padding: 5px;
+}
+header nav ul {
+    position: relative;
+}
+header nav ul li{
+    display: inline-block;
+    padding: 10px;
+}
+
+nav ul li:first-child{
+    position: absolute;
+    left: 10px;
+    font-family: cursive;
+
+}
+
+header nav ul li a {
+    text-decoration: none;
+    color: #fff;
+    font-weight: bold;
+}
+
+#primary{
+    max-width: 30%;
+}
+
+.alpha{
+    width: 50%;
+}
+
+main{
+    text-align: center;
+}
+
+article{
+    text-align: justify;
+    padding: 10px;
+    font-family: cursive;
+    background-color: whitesmoke;
+}
+
+#box{
+    max-width: 70%;
+    margin-left: 15%;
+    padding: 10px;
+}
+
+#second{
+    max-width: 30%;
+    display: flex;
+    margin-left: 0%;
+}
+
+.placeholder{
+    width: 100%;
+}
+
+.placeholders{
+    width: 100%;
+    flex: 33%;
+    display: inline-block;
+    margin-right: 10%;
+    margin-left: 10%;
+    padding: 5%;
+}
+
+#third{
+    max-width: 40%;
+    margin-left: 0%;
+    float: left;
+    position: relative;
+}
+
+.placeholderz{
+    width:100%;
+    padding-right: 10px;
+    margin-left: 10%;
+}
+
+#fourth{
+    position: relative;
+}
+
+#something{
+    text-align: justify;
+    max-width: 40%;
+    float: right;
+    margin-right: 10%;
+    font-family: cursive;
+}
+
+footer{
+    clear: both;
+    margin-top: 5%;
+    background-color:black;
+}
+
+footer nav{
+    background-color: black;
+}
+
+footer nav ul li{
+    padding: 5%;
+    padding-top: 50px;
+
+}

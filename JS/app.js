@@ -157,6 +157,6 @@ for(let i=0 ; i<neuArr.length ; i++){
 
 newArry();
 
-
+//fixed github issue
 
 console.log(table.childElementCount);
