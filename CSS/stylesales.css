@@ -1,0 +1,23 @@
+* {
+    box-sizing: border-box;
+}
+
+body{
+    background-color:whitesmoke;
+    font-family: Arial;
+    padding: 10px;
+}
+header{
+    text-align: right;
+    padding: 10px;
+    
+}
+
+#table{
+    margin-left: 30%;
+    padding: 10px;
+}
+
+table, th, td {
+    border: 1px solid black;
+  }
